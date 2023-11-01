@@ -14,6 +14,7 @@ public:
                 high=mid-1;
             }
         }
+        //edge case
         if(high==-1){
             int ans=1+(k-1);
             return ans;
