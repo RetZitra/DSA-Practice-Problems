@@ -2,8 +2,10 @@ class Solution {
 public:
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
         vector<int> merged;
+        //insert function take o(1) tc
         merged.insert(merged.end(),nums1.begin(),nums1.end());
         merged.insert(merged.end(),nums2.begin(),nums2.end());
+        //sort function takes 0((m+n)log(m+n)) tc
         sort(merged.begin(),merged.end());
         int start=0;
         int end=merged.size()-1;
