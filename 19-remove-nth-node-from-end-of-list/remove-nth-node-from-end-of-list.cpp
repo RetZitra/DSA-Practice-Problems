@@ -26,7 +26,7 @@ public:
         temp=head;
         // cnt++;
         int revcnt=cnt+1;
-        while(temp){
+        while(revcnt>0){
             revcnt--;
             if(revcnt==n){
                 if(revcnt==cnt){
@@ -34,11 +34,11 @@ public:
                    delete(temp);
                    return head;
                 }
-                else if(temp->next==NULL){
-                    prev->next=NULL;
-                    delete(temp);
-                    break;
-                }
+                // else if(temp->next==NULL){
+                //     prev->next=NULL;
+                //     delete(temp);
+                //     break;
+                // }
                 else{
                 prev->next=temp->next;
                 delete(temp);
