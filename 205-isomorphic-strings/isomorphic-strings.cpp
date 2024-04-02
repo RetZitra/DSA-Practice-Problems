@@ -5,7 +5,6 @@ public:
         map<pair<char,int>,int>freq;
         map<char,char>m;      
         for(int i=0;i<n1;i++){
-        //    m[s[i]]=t[i];
            freq[{s[i],1}]++;
            freq[{t[i],2}]++;
         }
