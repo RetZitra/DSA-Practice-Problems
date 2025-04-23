@@ -10,35 +10,31 @@
  */
 class Solution {
     public ListNode removeNthFromEnd(ListNode head, int x) {
-        //calculating the lenght of the node
-        int len=0;
-        ListNode temp=head;
-        while(temp!=null){
-            //jeheto count ta 0 theke start hocche tai age oi node er jonno length take barabo tarpor pointer thake next node e nie jabo ba onno kichu check korbo
-            len++;
-            temp=temp.next;
+        //by using first and slow pointer
+        //first pointer take slow pointer er theke x step egie rakhbo so, jokhon first pointer null node jabe slow pointer ta ,sesh theke xth node age thekbe to setai hobe sesh theke xth node jetake delete korte hobe
+        //jodi first pointer ta last node e traverse sesh kore to slow pointer ta sesh theke (x-1)th node e thakbe , 1 ta node age thekbe to sekherte amra jei node delete korte hobe tar ager node pabo to amader subidha hobe delete korar khetre
+        ListNode slow=head;
+        ListNode first=head;
+        //first pointer ta initially (x+1)th node e thakbe ba traverse start korbe,slow pointer ter theke x ghor egie thakbe
+        int cnt=0;
+        while(first!=null ){
+            cnt++;
+            if(cnt==x+1){
+                break;
+            }
+            first=first.next;
         }
-        //ebar ami (n-x+1)th node er ager node e pointer ta nie jabo jeheto ami (n-x+1)th node take delete korbo
-        //so ami pointer take (n-x+1)-1=(n-x) th node e nie jabo..mne current jei node ta delete hobe tar previous node e
-        //kintu ekhane jodi head node take delete korte bole mne x=length hoi to alada bhabe handle korte hobe karon amra sekhetre 0th node take khujbo kintu 0th node paboi na karon node er numbering 1 theke start hobe
-        if(x==len){
-            //deleting head node
+        //jodi initialization er somoy ei dekha jai je first pointer ta null e chole galo ba traverse sesh korlo ,thle amake head ta delete korte boleche
+        if(first==null){
             head=head.next;
         }
         else{
-        //to count the number of node traversed
-        int cnt=0;
-        temp=head;
-        while(temp!=null){
-            cnt++;
-            if(cnt==(len-x)){
-                break;
-            }
-            temp=temp.next;
+        while(first!=null && first.next!=null){
+            slow=slow.next;
+            first=first.next;
         }
-        //delete korar process previous node er next e , tar next node er next ke assign korlam
-        temp.next=temp.next.next;
+        slow.next=slow.next.next;
     }
         return head;
     }
-    }
+}
